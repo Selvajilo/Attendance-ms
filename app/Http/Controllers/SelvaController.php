@@ -205,7 +205,6 @@ public function fetchStudents(Request $request)
 
 
 
-
 public function storeUser(Request $request)
 {
     $request->validate([
@@ -223,18 +222,27 @@ public function storeUser(Request $request)
         'email.unique' => 'A user with this email and role already exists.',
     ]);
     
+    try {
+        DB::table('users')->insert([
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'password'   => Hash::make($request->password),
+            'role'       => $request->role,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
 
-    User::create([
-        'name'     => $request->name,
-        'email'    => $request->email,
-        'password' => Hash::make($request->password),
-        'role'     => $request->role,
-    ]);
-
-    return response()->json([
-        'success' => true,
-        'message' => 'User created successfully!'
-    ]);
+        return response()->json([
+            'success' => true,
+            'message' => 'User created successfully!'
+        ], 201);  // 201 Created status code
+        
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to create user: ' . $e->getMessage()
+        ], 500);
+    }
 }
 
 

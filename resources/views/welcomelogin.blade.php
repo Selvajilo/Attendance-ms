@@ -77,7 +77,6 @@ height: 60px;
 <!-- Navbar -->
 <nav class="navbar navbar-expand">
 <div class="container">
-{{-- <p class="navbar-brand text-white fw-bold" href="#">Selva AMS</p> --}}
 </div>
 </nav>
 

@@ -6,8 +6,16 @@
 
 <title>Login | Selva's Attendance MS</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <!-- Chart.js (for fees graph) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
 
@@ -25,6 +33,11 @@ flex-direction:column;
 .navbar{
 background: rgba(0,0,0,0.3);
 backdrop-filter: blur(10px);
+text-align: center;
+}
+.container{
+justify-content: center;
+text-align: center;
 }
 
 /* Center container */
@@ -118,10 +131,16 @@ color:#ffb3b3;
 
 <!-- Navbar -->
 
-<nav class="navbar navbar-expand-lg">
-<div class="container">
-<span class="navbar-brand text-white fw-bold">Selva AMS</span>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand" href="#">Selva's Attendance Management System</a>
+        <div class="ms-auto d-flex align-items-center gap-4 text-white">
+            <span>
+                <i class="far fa-calendar-alt me-2"></i>
+                {{ now()->format('d M Y') }}
+            </span>
+        </div>
+    </div>
 </nav>
 
 
